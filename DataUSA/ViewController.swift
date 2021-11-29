@@ -9,9 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var labelDataUsa: UILabel!
+    
+   private var dataUsa: DataUsa!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        fetchData()
+        labelDataUsa.text = dataUsa.data.description
     }
 
 
