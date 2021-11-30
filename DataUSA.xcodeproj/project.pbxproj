@@ -9,25 +9,25 @@
 /* Begin PBXBuildFile section */
 		28DBC6EC275572D6000C93B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC6EB275572D6000C93B9 /* AppDelegate.swift */; };
 		28DBC6EE275572D6000C93B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC6ED275572D6000C93B9 /* SceneDelegate.swift */; };
-		28DBC6F0275572D6000C93B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC6EF275572D6000C93B9 /* ViewController.swift */; };
 		28DBC6F3275572D6000C93B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28DBC6F1275572D6000C93B9 /* Main.storyboard */; };
 		28DBC6F5275572D7000C93B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28DBC6F4275572D7000C93B9 /* Assets.xcassets */; };
 		28DBC6F8275572D7000C93B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28DBC6F6275572D7000C93B9 /* LaunchScreen.storyboard */; };
 		28DBC700275572FF000C93B9 /* DataUSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC6FF275572FF000C93B9 /* DataUSA.swift */; };
 		28DBC702275573E7000C93B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC701275573E7000C93B9 /* NetworkManager.swift */; };
+		28FAB7BB27563428007EA04A /* DataUSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB7BA27563428007EA04A /* DataUSAViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		28DBC6E8275572D6000C93B9 /* DataUSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataUSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DBC6EB275572D6000C93B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28DBC6ED275572D6000C93B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		28DBC6EF275572D6000C93B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		28DBC6F2275572D6000C93B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28DBC6F4275572D7000C93B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28DBC6F7275572D7000C93B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28DBC6F9275572D7000C93B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DBC6FF275572FF000C93B9 /* DataUSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUSA.swift; sourceTree = "<group>"; };
 		28DBC701275573E7000C93B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		28FAB7BA27563428007EA04A /* DataUSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUSAViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +60,57 @@
 		28DBC6EA275572D6000C93B9 /* DataUSA */ = {
 			isa = PBXGroup;
 			children = (
-				28DBC6EB275572D6000C93B9 /* AppDelegate.swift */,
-				28DBC6ED275572D6000C93B9 /* SceneDelegate.swift */,
-				28DBC6EF275572D6000C93B9 /* ViewController.swift */,
-				28DBC6FF275572FF000C93B9 /* DataUSA.swift */,
-				28DBC701275573E7000C93B9 /* NetworkManager.swift */,
-				28DBC6F1275572D6000C93B9 /* Main.storyboard */,
-				28DBC6F4275572D7000C93B9 /* Assets.xcassets */,
-				28DBC6F6275572D7000C93B9 /* LaunchScreen.storyboard */,
-				28DBC6F9275572D7000C93B9 /* Info.plist */,
+				28FAB7C027563CC9007EA04A /* View Controllers */,
+				28FAB7C127563CD5007EA04A /* Models */,
+				28FAB7C227563CDC007EA04A /* Settings */,
+				28FAB7BF27563C9E007EA04A /* Storyboards */,
+				28FAB7BE27563C56007EA04A /* Supporting Files */,
 			);
 			path = DataUSA;
+			sourceTree = "<group>";
+		};
+		28FAB7BE27563C56007EA04A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28DBC6F9275572D7000C93B9 /* Info.plist */,
+				28DBC6EB275572D6000C93B9 /* AppDelegate.swift */,
+				28DBC6ED275572D6000C93B9 /* SceneDelegate.swift */,
+				28DBC6F6275572D7000C93B9 /* LaunchScreen.storyboard */,
+				28DBC6F4275572D7000C93B9 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28FAB7BF27563C9E007EA04A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				28DBC6F1275572D6000C93B9 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		28FAB7C027563CC9007EA04A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28FAB7BA27563428007EA04A /* DataUSAViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		28FAB7C127563CD5007EA04A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28DBC6FF275572FF000C93B9 /* DataUSA.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		28FAB7C227563CDC007EA04A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28DBC701275573E7000C93B9 /* NetworkManager.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28DBC6F0275572D6000C93B9 /* ViewController.swift in Sources */,
 				28DBC6EC275572D6000C93B9 /* AppDelegate.swift in Sources */,
 				28DBC702275573E7000C93B9 /* NetworkManager.swift in Sources */,
+				28FAB7BB27563428007EA04A /* DataUSAViewController.swift in Sources */,
 				28DBC6EE275572D6000C93B9 /* SceneDelegate.swift in Sources */,
 				28DBC700275572FF000C93B9 /* DataUSA.swift in Sources */,
 			);
@@ -299,7 +339,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y39DR36W5X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DataUSA/Info.plist;
+				INFOPLIST_FILE = "DataUSA/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -328,7 +368,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y39DR36W5X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DataUSA/Info.plist;
+				INFOPLIST_FILE = "DataUSA/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
