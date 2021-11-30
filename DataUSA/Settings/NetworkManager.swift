@@ -9,14 +9,12 @@ import Foundation
 
 class NetworkManager {
     
-    var dataUSA: DataUSA?
-    
     static let shared = NetworkManager()
     
     private init() {}
     
-    func fetchData(completed: @escaping () -> ()) {
-        guard let url = URL(string: Link.dataUSALink.rawValue) else { return }
+    func fetchData(from url: String?, with completion: @escaping(DataUSA) -> Void) {
+        guard let url = URL(string: url ?? "") else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
@@ -24,11 +22,14 @@ class NetworkManager {
                 return
             }
             do {
-                self.dataUSA = try JSONDecoder().decode(DataUSA.self, from: data)
-                completed()
+                let dataUSA = try JSONDecoder().decode(DataUSA.self, from: data)
+                DispatchQueue.main.async {
+                    completion(dataUSA)
+                }
             } catch let error {
-                print("Error: \(error.localizedDescription)")
+                print(error)
             }
         }.resume()
     }
 }
+

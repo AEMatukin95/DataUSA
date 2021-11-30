@@ -14,7 +14,7 @@
 		28DBC6F8275572D7000C93B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28DBC6F6275572D7000C93B9 /* LaunchScreen.storyboard */; };
 		28DBC700275572FF000C93B9 /* DataUSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC6FF275572FF000C93B9 /* DataUSA.swift */; };
 		28DBC702275573E7000C93B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBC701275573E7000C93B9 /* NetworkManager.swift */; };
-		28FAB7BB27563428007EA04A /* DataUSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB7BA27563428007EA04A /* DataUSAViewController.swift */; };
+		28FAB7BB27563428007EA04A /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB7BA27563428007EA04A /* DataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		28DBC6F9275572D7000C93B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28DBC6FF275572FF000C93B9 /* DataUSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUSA.swift; sourceTree = "<group>"; };
 		28DBC701275573E7000C93B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		28FAB7BA27563428007EA04A /* DataUSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUSAViewController.swift; sourceTree = "<group>"; };
+		28FAB7BA27563428007EA04A /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 		28FAB7C027563CC9007EA04A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28FAB7BA27563428007EA04A /* DataUSAViewController.swift */,
+				28FAB7BA27563428007EA04A /* DataViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 			files = (
 				28DBC6EC275572D6000C93B9 /* AppDelegate.swift in Sources */,
 				28DBC702275573E7000C93B9 /* NetworkManager.swift in Sources */,
-				28FAB7BB27563428007EA04A /* DataUSAViewController.swift in Sources */,
+				28FAB7BB27563428007EA04A /* DataViewController.swift in Sources */,
 				28DBC6EE275572D6000C93B9 /* SceneDelegate.swift in Sources */,
 				28DBC700275572FF000C93B9 /* DataUSA.swift in Sources */,
 			);
