@@ -41,9 +41,19 @@ class DataViewController: UITableViewController {
         }
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            guard let detailsVC = segue.destination as? DetailViewController else {return}
+            detailsVC.dataState = dataUSA?.data?[indexPath.row]
+        }
+    }
 }
+
+//if let indexPath = tableView.indexPathForSelectedRow {
+//    guard let detailsVC = segue.destination as? DetailsViewController else {return}
+//    detailsVC.dataState = networkManager.dataUSA?.data?[indexPath.row]
+//}
+//}
+//}
+
