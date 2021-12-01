@@ -6,6 +6,13 @@
 //
 
 import Foundation
+import Alamofire
+
+enum NetworkError: Error{
+    case invalidURL
+    case noData
+    case decodingError
+}
 
 class NetworkManager {
     
@@ -13,23 +20,42 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchData(from url: String?, with completion: @escaping(DataUSA) -> Void) {
-        guard let url = URL(string: url ?? "") else { return }
+    func fetchData(from url: String, with completion: @escaping(Result<DataUSA, NetworkError>) -> Void) {
+        guard let url = URL(string: url) else {
+            completion(.failure(.invalidURL))
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
+                completion(.failure(.noData))
                 return
             }
+            
             do {
                 let dataUSA = try JSONDecoder().decode(DataUSA.self, from: data)
                 DispatchQueue.main.async {
-                    completion(dataUSA)
+                    completion(.success(dataUSA))
                 }
-            } catch let error {
-                print(error)
+            } catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
     }
+    
+    // MARK: - Alamofire
+//    func fetchDataWithAlamofire(from url: String, with completion: @escaping(Result<[DataState], NetworkError>) -> Void) {
+//        AF.request(url)
+//            .validate()
+//            .responseJSON { dataUSA in
+//                switch dataUSA.result {
+//                case .success(let date):
+//                    let dataUSA = DataState.getDataUSA(from: date)
+//                    completion(.success(dataUSA))
+//                case .failure(_):
+//                    completion(.failure(.decodingError))
+//                }
+//            }
+//    }
+    
 }
-

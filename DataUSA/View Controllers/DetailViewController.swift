@@ -15,8 +15,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = dataState?.State
-        if let population = dataState?.Population, let year = dataState?.Year {
+        navigationItem.title = dataState?.state
+        if let population = dataState?.population, let year = dataState?.year {
             stateLabel.text =
             """
             Population: \(String(population))
