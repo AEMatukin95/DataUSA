@@ -17,10 +17,10 @@ struct DataState: Decodable {
     let year: String?
     let population: Int?
     
-    init(dataUSA: [String: Any]) {
-        state = dataUSA["state"] as? String
-        year = dataUSA["year"] as? String
-        population = dataUSA["population"] as? Int
+    init(data: [String: Any]) {
+        state = data["State"] as? String
+        year = data["Year"] as? String
+        population = data["Population"] as? Int
     }
     
     enum CodingKeys: String, CodingKey {
@@ -31,7 +31,7 @@ struct DataState: Decodable {
     
     static func getDataUSA(from date: Any) -> [DataState] {
         guard let dataUSA = date as? [[String: Any]] else { return []}
-        return dataUSA.compactMap { DataState(dataUSA: $0) }
+        return dataUSA.compactMap { DataState(data: $0) }
         }
     }
 

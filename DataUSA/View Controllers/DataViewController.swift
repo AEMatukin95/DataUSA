@@ -20,6 +20,7 @@ class DataViewController: UITableViewController {
         
         // MARK: - Alamofire
         alamofireGetPassed()
+        print(dataState)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,6 +77,7 @@ class DataViewController: UITableViewController {
             switch result {
             case .success(let state):
                 self.dataState = state
+                
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
