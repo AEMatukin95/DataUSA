@@ -44,18 +44,18 @@ class NetworkManager {
     }
     
     // MARK: - Alamofire
-//    func fetchDataWithAlamofire(from url: String, with completion: @escaping(Result<[DataState], NetworkError>) -> Void) {
-//        AF.request(url)
-//            .validate()
-//            .responseJSON { dataUSA in
-//                switch dataUSA.result {
-//                case .success(let date):
-//                    let dataUSA = DataState.getDataUSA(from: date)
-//                    completion(.success(dataUSA))
-//                case .failure(_):
-//                    completion(.failure(.decodingError))
-//                }
-//            }
-//    }
+    func fetchDataWithAlamofire(from url: String, with completion: @escaping(Result<[DataState], NetworkError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataUSA in
+                switch dataUSA.result {
+                case .success(let date):
+                    let dataUSA = DataState.getDataUSA(from: date)
+                    completion(.success(dataUSA))
+                case .failure(_):
+                    completion(.failure(.decodingError))
+                }
+            }
+    }
     
 }

@@ -16,24 +16,45 @@ class DataViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        fetchDataUSA()
-//        fetchDataWithAlamofire(from: Link.dataUSALink.rawValue)
+//        fetchDataUSA()
+        
+        // MARK: - Alamofire
+        alamofireGetPassed()
     }
 
-    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataUSA?.data?.count ?? 0
+//        dataUSA?.data?.count ?? 0
+        
+        // MARK: - Alamofire
+        dataState.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        let data = dataUSA?.data?[indexPath.row]
-            var content = cell.defaultContentConfiguration()
-            content.text = data?.state ?? ""
-            content.image = UIImage(systemName: "globe.americas.fill")
-            cell.contentConfiguration = content
+        //        let data = dataUSA?.data?[indexPath.row]
+        //            var content = cell.defaultContentConfiguration()
+        //            content.text = data?.state ?? ""
+        //            content.image = UIImage(systemName: "globe.americas.fill")
+        //            cell.contentConfiguration = content
         
+        // MARK: - Alamofire
+        let data = dataState[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = data.state
+        content.image = UIImage(systemName: "globe.americas.fill")
+        cell.contentConfiguration = content
+       
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            guard let detailsVC = segue.destination as? DetailViewController else {return}
+            detailsVC.dataState = dataUSA?.data?[indexPath.row]
+            
+            // MARK: - Alamofire
+            detailsVC.dataState = dataState[indexPath.row]
+        }
     }
     
     private func fetchDataUSA() {
@@ -48,46 +69,19 @@ class DataViewController: UITableViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            guard let detailsVC = segue.destination as? DetailViewController else {return}
-            detailsVC.dataState = dataUSA?.data?[indexPath.row]
+    
+    // MARK: - Alamofire
+    func alamofireGetPassed() {
+        NetworkManager.shared.fetchDataWithAlamofire(from: Link.dataUSALink.rawValue) { result in
+            switch result {
+            case .success(let state):
+                self.dataState = state
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
-    
-//    // MARK: - Alamofire
-//    func getAlamofire() {
-//        NetworkManager.shared.fetchDataWithAlamofire(from: Link.dataUSALink.rawValue) { result in
-//            switch result {
-//            case .success(let dataState):
-//                self.dataState = dataState
-//                self.tableView.reloadData()
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    func fetchDataWithAlamofire(from url: String) {
-        AF.request(url)
-                .validate()
-                .responseJSON { dataUSA in
-                    switch dataUSA.result {
-                    case .success(let data):
-                        guard let dataState = data as? [[String: Any]] else { return }
-                        for dateState in dataState {
-                            let data = DataState(
-                                state: dateState["State"] as? String,
-                                year: dateState["Year"] as? String,
-                                population: dateState["Population"] as? Int
-                            )
-                            self.dataState.append(data)
-                        }
-                        print(dataState)
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-        }
 }
 
 
