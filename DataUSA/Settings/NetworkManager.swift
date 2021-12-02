@@ -20,30 +20,31 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchData(from url: String, with completion: @escaping(Result<DataUSA, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            do {
-                let dataUSA = try JSONDecoder().decode(DataUSA.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(dataUSA))
-                }
-            } catch {
-                completion(.failure(.decodingError))
-            }
-        }.resume()
-    }
+    // MARK: - Пример с Result (без Alamofire)
+//    func fetchData(from url: String, with completion: @escaping(Result<DataUSA, NetworkError>) -> Void) {
+//        guard let url = URL(string: url) else {
+//            completion(.failure(.invalidURL))
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            guard let data = data else {
+//                completion(.failure(.noData))
+//                return
+//            }
+//
+//            do {
+//                let dataUSA = try JSONDecoder().decode(DataUSA.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(.success(dataUSA))
+//                }
+//            } catch {
+//                completion(.failure(.decodingError))
+//            }
+//        }.resume()
+//    }
     
-    // MARK: - Alamofire
+    // MARK: - Пример с Alamofire
     func fetchDataWithAlamofire(from url: String, with completion: @escaping(Result<[DataState], NetworkError>) -> Void) {
         AF.request(url)
             .validate()
@@ -57,5 +58,4 @@ class NetworkManager {
                 }
             }
     }
-    
 }

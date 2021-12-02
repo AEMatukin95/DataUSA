@@ -26,6 +26,4 @@ class DetailViewController: UIViewController {
             """
         }
     }
-
-
 }

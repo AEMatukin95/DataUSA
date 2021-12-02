@@ -9,7 +9,6 @@ import Foundation
 
 struct DataUSA: Decodable {
     var data: [DataState]?
-    
 }
 
 struct DataState: Decodable {
@@ -30,11 +29,17 @@ struct DataState: Decodable {
     }
     
     static func getDataUSA(from date: Any) -> [DataState] {
-        guard let dataUSA = date as? [[String: Any]] else { return []}
-        return dataUSA.compactMap { DataState(data: $0) }
+        guard let dataUSA = date as? [String: Any] else { return []}
+        guard let dataUSAArray = dataUSA["data"] as? [Any] else { return []}
+        guard let dataStateArray = dataUSAArray as? [[String: Any]] else { return []}
+        var dataStateUSA: [DataState] = []
+        for data in dataStateArray {
+            let dataState = DataState(data: data)
+            dataStateUSA.append(dataState)
         }
+        return dataStateUSA
     }
-
+}
 
 enum Link: String {
     case dataUSALink = "https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest"
